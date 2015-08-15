@@ -1,5 +1,5 @@
 # UnityLogger
-A simple python-like logger for Unity
+A simple python-like logger for Unity, also provides extensions to MonoBehaviour for easy access
 
 Example:
 ```
