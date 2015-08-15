@@ -33,7 +33,35 @@ namespace Smackware.Logging
 
 		public void Log(LogLevel level, string text, params object[] values)
 		{
-			_log(UnityEngine.Debug.Log, level, text, values);
+			Action<string> logFunc;
+			switch (level)
+			{
+				case(LogLevel.Debug):
+				{
+					logFunc = UnityEngine.Debug.Log;
+					break;
+				}
+				case(LogLevel.Info):
+				{
+					logFunc = UnityEngine.Debug.Log;
+					break;
+				}
+				case(LogLevel.Warn):
+				{
+					logFunc = UnityEngine.Debug.LogWarning;
+					break;
+				}
+				case(LogLevel.Error):
+				{
+					logFunc = UnityEngine.Debug.LogError;
+					break;
+				}
+				default:
+				{
+					throw new Exception("Invalid logging level");
+				}
+			}
+			_log(logFunc, level, text, values);
 		}
 
 		public void Debug(string text, params object[] values)
